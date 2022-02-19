@@ -1,5 +1,8 @@
+import { Box, Flex, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { ClaimAvatar, JoinAlpha } from "../components/buttons";
+import { Container } from "../components/containers";
 import { Header } from "../components/headers";
 
 const Page: NextPage = () => {
@@ -12,7 +15,23 @@ const Page: NextPage = () => {
       </Head>
 
       <main>
-        <Header />
+        <Box as="section">
+          <Header />
+          <Container>
+            <Flex justifyContent="space-evenly">
+              <ClaimAvatar/>
+              <JoinAlpha/>
+            </Flex>
+            <Flex as="article" flexDirection="row" justifyContent="center">
+              <Text as="h3">Grounds is the best way to earn crypto whilst contributing to your favorite competitive games</Text>
+            </Flex>
+          </Container>
+        </Box>
+        <Box as="section" backgroundColor="linear-gradient(rgb(241, 241, 245) 0%, rgb(255, 255, 255) 74.78%, rgb(255, 255, 255) 100%), rgb(255, 255, 255)">
+          <Container>
+            <Text>EXPLORE THE BATTLE GROUNDS</Text>
+          </Container>
+        </Box>
       </main>
 
       <footer></footer>

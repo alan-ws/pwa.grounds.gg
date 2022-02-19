@@ -1,66 +1,72 @@
 import { Flex, keyframes, Text } from "@chakra-ui/react";
-import { useEffect, useRef } from "react";
+import { Keyframes } from "@emotion/serialize";
+import { FC, useEffect, useRef } from "react";
 import { Container } from "./containers";
 
-// {
-//     background: "-webkit-linear-gradient(#eee, #333)",
-//     "-webkit-background-clip": "text",
-//     "-webkit-text-fill-color": "transparent",
-//   }
+const colorChangeOne = `
+  0%, 16.667%, 100% {
+    opacity: 1;
+  }
 
-const colorChange = keyframes`
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+  33.333%, 83.333% {
+    opacity: 0;
+  }
 `;
 
-export const Header = () => {
-  const play = useRef<HTMLParagraphElement>(null);
-  const earn = useRef<HTMLParagraphElement>(null);
-  const repeat = useRef<HTMLParagraphElement>(null);
+const colorChangeTwo = `
+  0%, 16.667%, 66.667%, 100% {
+    opacity:0
+  }
 
+  33.333%, 50% {
+    opacity: 1;
+  }
+`;
+
+const colorChangeThree = `
+  0%, 50%, 100% {
+    opacity: 0;
+  }
+
+  66.667%, 83.333% {
+    opacity: 1;
+  }
+`;
+
+const GradientText: FC<{ content: string; animationKeyframes: string; }> = ({ children, content, animationKeyframes }) => {
+  return <Text
+    as="span"
+    _before={{
+      content: `'${content}'`,
+      position: "absolute",
+      zIndex: 1,
+      background: "linear-gradient(60deg, #eee, #333)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      animation: `${keyframes`${animationKeyframes}`} 4s infinite`,
+    }}
+  >
+    {children}
+  </Text>
+}
+
+export const Header = () => {
   return (
     <Container>
-      <Flex as="header" flexDirection={"column"} alignItems="center">
+      <Flex as="header" flexDirection="column" alignItems="center">
         <Text
           as="h1"
           textStyle="Statment"
-          userSelect={"none"}
-          sx={{ content: "'Play.'", padding: "0.05em" }}
+          userSelect="none"
+          position="relative"
         >
-          <Text
-            as="span"
-            _before={{
-              content: "'Play.'",
-              position: "absolute",
-              display: "block",
-              width: "100%",
-              textAlign: "center",
-              color: "black",
-              top: 0,
-              bottom: 0,
-              left: 0,
-              zIndex: 0,
-              paddingLeft: "0.05em",
-              paddingRight: "0.05em",
-              animation: `${colorChange} 8s infinite`,
-            }}
-            sx={{
-              position: "relative",
-              zIndex: 1,
-              background: "linear-gradient(90deg,#eee, #333)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-            animation={`${colorChange} 8s infinite`}
-          >
-            Play.
-          </Text>
+          <GradientText content="Play." animationKeyframes={colorChangeOne}>Play.</GradientText>
         </Text>
-        <Text ref={earn} as="h1" textStyle="Statment">
-          Earn.
+        <Text as="h1" textStyle="Statment">
+          <GradientText content="Earn." animationKeyframes={colorChangeTwo}>Earn.</GradientText>
         </Text>
-        <Text ref={repeat} as="h1" textStyle="Statment">
-          Repeat.
+        <Text as="h1" textStyle="Statment">
+          <GradientText content="Repeat." animationKeyframes={colorChangeThree}>Repeat.</GradientText>
         </Text>
       </Flex>
     </Container>
