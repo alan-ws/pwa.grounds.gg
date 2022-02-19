@@ -1,9 +1,10 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { ClaimAvatar, JoinAlpha } from "../components/buttons";
 import { Container } from "../components/containers";
 import { Header } from "../components/headers";
+import { NavBar } from "../components/navigation";
 
 const Page: NextPage = () => {
   return (
@@ -14,22 +15,63 @@ const Page: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <NavBar />
+
       <main>
         <Box as="section">
           <Header />
           <Container>
             <Flex justifyContent="space-evenly">
-              <ClaimAvatar/>
-              <JoinAlpha/>
+              <ClaimAvatar />
+              <JoinAlpha />
             </Flex>
             <Flex as="article" flexDirection="row" justifyContent="center">
               <Text as="h3">Grounds is the best way to earn crypto whilst contributing to your favorite competitive games</Text>
             </Flex>
           </Container>
         </Box>
-        <Box as="section" backgroundColor="linear-gradient(rgb(241, 241, 245) 0%, rgb(255, 255, 255) 74.78%, rgb(255, 255, 255) 100%), rgb(255, 255, 255)">
+        <Box as="section" background="linear-gradient(rgb(241, 241, 245) 0%, rgb(255, 255, 255) 74.78%, rgb(255, 255, 255) 100%), rgb(255, 255, 255)">
           <Container>
-            <Text>EXPLORE THE BATTLE GROUNDS</Text>
+            <Text as="h2" textStyle="SectionHeading" textAlign={"center"}>We're Gamers</Text>
+            <Flex as="article" flexDirection={"column"} margin={["0 5em"]}>
+              <Text as="h4" textStyle="SectionSubHeading" textAlign={"center"}>We are building the tools and solutions to make gaming rewarding for all invovled.</Text>
+              <Flex flexDirection={"row"} width="100%" flexWrap="wrap">
+                {[{title: 'owernship via nft', detail: 'game account tied to nft, with access, transfer rights'}, {title: 'robust reward system', detail: 'earn RNG and GG, unqiue powerfuls, rare items'}, {title: 'gamer centric', detail: 'with GG tokens, you have a say and vote in a system that you help build'}, {title: 'defining the standard', detail: 'earn as you play is the wild west'}].map((value) =>
+                  <Flex width={"50%"} padding={["1em 1em"]}>
+                    <Flex flexDirection="column" width={"100%"} backgroundColor={"gray.100"} borderRadius="0.4em">
+                      <Text>{value.title}</Text>
+                      <Text>{value.detail}</Text>
+                    </Flex>
+                  </Flex>
+                )}
+              </Flex>
+            </Flex>
+          </Container>
+        </Box>
+        <Box as="section" backgroundColor="rgb(13, 12, 34)" >
+          <Container>
+            <Text color={"white"} textAlign="center">ENTER THE BATTLE GROUND</Text>
+            <Flex width={"fit-content"} alignSelf="center">
+              <Text backgroundColor={"blue"} borderRadius="50%" color={"white"} padding="1em 1.5em">1</Text>
+            </Flex>
+            <Text color={"white"} textAlign="center">Compete</Text>
+            <Text color={"white"} textAlign="center">Start with the Individual</Text>
+            <Text color={"white"} textAlign="center">Lider is our distributed, localised highly competitive PvE ladder.</Text>
+            <Flex flexDirection={"row"}>
+              <Text color={"white"} width="50%">Player List</Text>
+              <Flex width={"50%"} justifyContent="flex-end">
+                <Button>Previous</Button>
+                <Button>Next</Button>
+              </Flex>
+            </Flex>
+            <Flex flexDirection={"row"} w="100%" overflowX="hidden">
+              {[{
+                game: 'League of Legends',
+                image: 'https://img.search.brave.com/NCUe306sTXCmhUdO3UgYKNQra2bYEpy10a8a7fEUJGQ/rs:fit:1200:1027:1/g:ce/aHR0cHM6Ly9pbWFn/ZXMtbmEuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzkxVWJ5ZHdEbThM/Ll9BQ19TTDE1MDBf/LmpwZw'
+              }].map((value) => <><Flex position={"relative"} w="20%" borderRadius="1.25em" height={"386px"} backgroundImage={`url(${value.image})`} backgroundRepeat="no-repeat" backgroundPosition="center">
+                <Flex position={"absolute"} backgroundColor={"gray.100"} height="fit-content" padding={"0.5em 1em"} borderRadius="0.4em" bottom={4} right={4}>Supported</Flex>
+              </Flex><Text>{value.game}</Text></>)}
+            </Flex>
           </Container>
         </Box>
       </main>

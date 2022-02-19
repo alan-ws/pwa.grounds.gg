@@ -22,6 +22,20 @@ const text = {
       letterSpacing: "-0.06em",
       lineHeight: 'initial'
     },
+    SectionHeading: {
+      fontFamily: "Inter",
+      fontSize: ["1rem", "4rem"],
+      fontWeight: 700,
+      letterSpacing: "-0.06em",
+      lineHeight: 'initial'
+    },
+    SectionSubHeading: {
+      fontFamily: "Inter",
+      fontSize: ["1rem", "2rem"],
+      fontWeight: 400,
+      letterSpacing: "-0.06em",
+      lineHeight: 'initial'
+    }
   },
 };
 

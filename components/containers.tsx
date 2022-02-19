@@ -1,8 +1,10 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, ResponsiveValue } from "@chakra-ui/react";
 import { FC } from "react";
 
-export const Container: FC = ({ children }) => (
-  <Flex flexDirection={"column"} maxWidth={"920px"} margin={"0 auto"}>
+type FlexDirection = 'row' | 'column'
+
+export const Container: FC<{dir?: ResponsiveValue<FlexDirection>}> = ({ children, dir }) => (
+  <Flex flexDirection={dir ?? "column"} maxWidth={"1200px"} margin={"0 auto"}>
     {children}
   </Flex>
 );
