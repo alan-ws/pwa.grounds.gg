@@ -101,7 +101,7 @@ const Page: NextPage = () => {
               textAlign={"center"}
               marginBottom="0.35em"
             >
-              We're Gamers
+              We&apos;re Gamers
             </Text>
             <Flex as="article" flexDirection={"column"} margin={["0 5em"]}>
               <Text
