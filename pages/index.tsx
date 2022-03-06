@@ -1,10 +1,16 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import { ClaimAvatar, JoinAlpha } from "../components/buttons";
 import { Container } from "../components/containers";
-import { Header } from "../components/headers";
+import { Contribute } from "../components/contribute";
+import { EthereumLogo } from "../components/ethereumLogo";
+import { GradientText, Header } from "../components/headers";
 import { NavBar } from "../components/navigation";
+import { Ticker } from "../components/ticker";
+import { Trophy } from "../components/trophy";
 
 const Page: NextPage = () => {
   return (
@@ -18,35 +24,63 @@ const Page: NextPage = () => {
       <NavBar />
 
       <main>
-        <Box as="section">
+        <Box as="section" marginTop={"6rem"}>
           <Header />
           <Container>
-            <Flex justifyContent="space-evenly">
+            <Flex
+              justifyContent="space-evenly"
+              marginTop={"3rem"}
+              marginBottom="3rem"
+            >
               <ClaimAvatar />
               <JoinAlpha />
             </Flex>
             <Flex as="article" flexDirection="column">
-              <Text as="h3" textAlign={"center"}>
+              <Text as="h3" textAlign={"center"} textStyle="body3">
                 Grounds is the best way to earn crypto whilst contributing to
                 your favorite competitive games
               </Text>
-              <Text as="h3" textAlign={"center"}>
+              <Text as="h3" textAlign={"center"} textStyle="body3">
                 We are the gamification layer on top of the traditional games
                 you love to play.
               </Text>
-              <Flex width={"50%"} alignSelf="center">
+              <Flex
+                width={"50%"}
+                alignSelf="center"
+                marginTop={"2rem"}
+                marginBottom="2rem"
+              >
                 <Flex width={"100%"} justifyContent={"space-evenly"}>
                   <Box as="span">
-                    <Text as="p">League of Legends</Text>
+                    <Text as="p" textStyle={"outerLink"}>
+                      League of Legends
+                    </Text>
                   </Box>
                   <Box as="span">
-                    <Text as="p">PUBG</Text>
+                    <Text as="p" textStyle={"outerLink"}>
+                      PUBG
+                    </Text>
                   </Box>
                   <Box as="span">
-                    <Text as="p">CS:GO</Text>
+                    <Link
+                      href={
+                        "https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/"
+                      }
+                      passHref={true}
+                    >
+                      <Text
+                        as="p"
+                        textStyle={"outerLink"}
+                        _hover={{ cursor: "pointer" }}
+                      >
+                        CS:GO
+                      </Text>
+                    </Link>
                   </Box>
                   <Box as="span">
-                    <Text as="p">...and more</Text>
+                    <Text as="p" textStyle={"outerLink"}>
+                      ...and more
+                    </Text>
                   </Box>
                 </Flex>
               </Flex>
@@ -56,87 +90,259 @@ const Page: NextPage = () => {
         <Box
           as="section"
           background="linear-gradient(rgb(241, 241, 245) 0%, rgb(255, 255, 255) 74.78%, rgb(255, 255, 255) 100%), rgb(255, 255, 255)"
+          paddingTop={"6rem"}
+          paddingBottom="4rem"
+          pos={"relative"}
         >
           <Container>
-            <Text as="h2" textStyle="SectionHeading" textAlign={"center"}>
+            <Text
+              as="h2"
+              textStyle="SectionHeading"
+              textAlign={"center"}
+              marginBottom="0.35em"
+            >
               We're Gamers
             </Text>
             <Flex as="article" flexDirection={"column"} margin={["0 5em"]}>
-              <Text as="h4" textStyle="SectionSubHeading" textAlign={"center"}>
+              <Text
+                as="h4"
+                textStyle="SectionSubHeading"
+                textAlign={"center"}
+                padding="0 5em"
+              >
                 We are building the tools and solutions to make gaming rewarding
                 for all invovled.
               </Text>
-              <Flex flexDirection={"row"} width="100%" flexWrap="wrap">
+              <Flex
+                flexDirection={"row"}
+                width="100%"
+                flexWrap="wrap"
+                padding="2.25em 0 5.25em 0"
+              >
                 {[
                   {
-                    title: "owernship via nft",
+                    title: "Owernship as NFT",
                     detail:
                       "game account tied to nft, with access, transfer rights",
+                    border: "#351990",
+                    base: "#d6d1e8",
                   },
                   {
-                    title: "robust reward system",
+                    title: "Robust Reward System",
                     detail: "earn RNG and GG, unqiue powerfuls, rare items",
+                    border: "#3de5a7",
+                    base: "#d8f9ed",
                   },
                   {
-                    title: "gamer centric",
+                    title: "Gamer Centric",
                     detail:
                       "with GG tokens, you have a say and vote in a system that you help build",
+                    border: "#ff8533",
+                    base: "#ffe6d6",
                   },
                   {
-                    title: "defining the standard",
+                    title: "Define The Rules",
                     detail: "earn as you play is the wild west",
+                    border: "#088da5",
+                    base: "#cde8ed",
                   },
                 ].map((value) => (
                   <Flex key={value.title} width={"50%"} padding={["1em 1em"]}>
                     <Flex
                       flexDirection="column"
                       width={"100%"}
-                      backgroundColor={"gray.100"}
+                      backgroundColor={`${value.base}`}
                       borderRadius="0.4em"
+                      border={`0.20rem solid ${value.border}`}
+                      padding={["1.25em 2.25em"]}
                     >
-                      <Text>{value.title}</Text>
-                      <Text>{value.detail}</Text>
+                      <Text as="h4" textStyle={"CardHeading"} color={"#1A1A1A"}>
+                        {value.title}
+                      </Text>
+                      <Text color={"#1A1A1A"}>{value.detail}</Text>
                     </Flex>
                   </Flex>
                 ))}
               </Flex>
             </Flex>
           </Container>
+          <Ticker />
         </Box>
         <Box as="section" backgroundColor="rgb(13, 12, 34)">
           <Container>
-            <Text color={"white"} textAlign="center">
+            <Text
+              paddingTop={"6rem"}
+              color={"white"}
+              textAlign="center"
+              textStyle={"TinyHeading"}
+              transform="scale(1.2, 0.9)"
+            >
               ENTER THE BATTLE GROUNDS
             </Text>
-            <Flex width={"fit-content"} alignSelf="center">
-              <Text
-                backgroundColor={"blue"}
+            <Flex flexDir={"column"} alignItems="center" paddingTop={"3rem"}>
+              <Flex
+                background="linear-gradient(90deg, #351990, #088da5)"
                 borderRadius="50%"
-                color={"white"}
-                padding="1em 1.5em"
+                width={"8px"}
+                height="8px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #351990, #088da5)"
+                borderRadius="50%"
+                width={"12px"}
+                height="12px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #351990, #088da5)"
+                borderRadius="50%"
+                width={"16px"}
+                height="16px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #351990, #088da5)"
+                borderRadius="50%"
+                width={"20px"}
+                height="20px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                width={"fit-content"}
+                alignSelf="center"
+                paddingBottom="1.5rem"
               >
-                1
-              </Text>
+                <Text
+                  background="linear-gradient(90deg, #351990, #088da5)"
+                  borderRadius="50%"
+                  color={"white"}
+                  padding="0.5em 1em"
+                  textStyle={"Number"}
+                >
+                  1
+                </Text>
+              </Flex>
             </Flex>
-            <Text color={"white"} textAlign="center">
-              Play
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionsHeading"}
+            >
+              <GradientText content="Play" colorString="#351990, #088da5">
+                Play
+              </GradientText>
             </Text>
-            <Text color={"white"} textAlign="center">
-              Start with the Individual
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionSubHeadingTwo"}
+              marginTop="1.25rem"
+            >
+              Start with the player
             </Text>
             <Text color={"white"} textAlign="center">
               Lider is our distributed, localised highly competitive PvE ladder.
             </Text>
-            <Flex flexDirection={"row"}>
-              <Text color={"white"} width="50%">
-                Player List
-              </Text>
-              <Flex width={"50%"} justifyContent="flex-end">
-                <Button>Previous</Button>
-                <Button>Next</Button>
+            <Flex
+              width={"100%"}
+              minH="fit-content"
+              pos={"relative"}
+              marginTop="3.25rem"
+              marginBottom={"5rem"}
+            >
+              <Flex width={"50%"} pos="relative" minH="426px">
+                <Flex
+                  boxShadow="2px 5px 18px 5px black"
+                  pos={"absolute"}
+                  width="90%"
+                  height={"305px"}
+                  zIndex={1}
+                  borderRadius="8px"
+                >
+                  <video width={"100%"} height="100%" autoPlay muted loop>
+                    <source src="kaisa.mp4" type="video/mp4" />
+                  </video>
+                </Flex>
+                <Flex
+                  boxShadow="2px 5px 18px 5px black"
+                  pos={"absolute"}
+                  width="90%"
+                  height={"318px"}
+                  zIndex={2}
+                  bottom={0}
+                  right={0}
+                  borderRadius={"8px"}
+                >
+                  <Image src="/screen.svg" layout="fill" alt="" />
+                </Flex>
+              </Flex>
+              <Flex
+                flexDirection={"column"}
+                width="50%"
+                justifyContent={"space-evenly"}
+                paddingRight="6rem"
+                paddingLeft={"18px"}
+              >
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    PvE
+                  </Text>
+                  <Text color={"gray.400"}>
+                    allows players to sell/buy/loan accounts, items, time,
+                    skills you’ve earned whilst playing your favorite competitve
+                    games like League of Legends.
+                  </Text>
+                </Flex>
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    PvP
+                  </Text>
+                  <Text color={"gray.400"}>
+                    RNG and GG tokens each have their own value systems.
+                  </Text>
+                </Flex>
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Local
+                  </Text>
+                  <Text color={"gray.400"}>
+                    RNG and GG tokens each have their own value systems.
+                  </Text>
+                </Flex>
               </Flex>
             </Flex>
-            <Flex flexDirection={"row"} overflowX="scroll">
+            <Flex flexDirection={"row"}>
+              <Text
+                textStyle="SectionSubHeadingTwo"
+                color={"white"}
+                width="50%"
+                marginBottom="1rem"
+                marginTop="5rem"
+              >
+                Supported Games
+              </Text>
+            </Flex>
+            <Flex
+              flexDirection={"row"}
+              overflowX="scroll"
+              sx={{
+                "&::-webkit-scrollbar": {
+                  width: "16px",
+                },
+                "&::-webkit-scrollbar-track": {
+                  "box-shadow": "inset 0 0 5px #252438",
+                  "border-radius": "8px",
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  background: "#252438",
+                  "border-radius": "10px",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  background: "#3d3c4e",
+                },
+              }}
+            >
               {[
                 {
                   game: "League of Legends",
@@ -169,12 +375,17 @@ const Page: NextPage = () => {
                   status: "coming soon",
                 },
               ].map((value) => (
-                <Flex key={value.game} flexDirection="column" margin="1em">
+                <Flex
+                  key={value.game}
+                  flexDirection="column"
+                  margin="1em"
+                  marginBottom={"1.25rem"}
+                >
                   <Flex
                     position={"relative"}
                     minW="256px"
                     borderRadius="1.25em"
-                    minH={"374px"}
+                    minH={"336px"}
                     backgroundImage={`url(${value.image})`}
                     backgroundRepeat="no-repeat"
                     backgroundPosition="center"
@@ -182,102 +393,440 @@ const Page: NextPage = () => {
                   >
                     <Flex
                       position={"absolute"}
-                      backgroundColor={"gray.100"}
+                      backgroundColor={"rgba(68,68,68, .45)"}
+                      backdropFilter="blur(16px)"
                       height="fit-content"
                       padding={"0.5em 1em"}
                       borderRadius="0.4em"
                       bottom={4}
                       right={4}
+                      fontFamily="Inter"
+                      fontWeight={900}
+                      color="whiteAlpha.700"
                     >
-                      {value.status}
+                      {value.status.toUpperCase()}
                     </Flex>
                   </Flex>
                   <Flex flexDirection={"column"}>
-                    <Text as="p" color={"white"}>
+                    <Text as="p" color={"white"} textStyle="gameLabel">
                       {value.game}
                     </Text>
-                    <Text as="p" color={"white"}>
-                      Visit site
-                    </Text>
+                    <a
+                      href={""}
+                      style={{
+                        backgroundColor: "transparent",
+                        color: "inherit",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Text
+                        as="span"
+                        color={"white"}
+                        textStyle="visitGameSite"
+                        sx={{
+                          background: '-webkit-linear-gradient(270deg, #eee, blue)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent'
+                        }}
+                      >
+                        Visit site
+                      </Text>
+                    </a>
                   </Flex>
                 </Flex>
               ))}
             </Flex>
             {/* SECOND SECTION */}
-            <Flex width={"fit-content"} alignSelf="center">
-              <Text
-                backgroundColor={"orange"}
+            <Flex flexDir={"column"} alignItems="center" paddingTop={"8rem"}>
+              <Flex
+                background="linear-gradient(90deg, #248964, #3de5a7)"
                 borderRadius="50%"
-                color={"white"}
-                padding="1em 1.5em"
+                width={"8px"}
+                height="8px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #248964, #3de5a7)"
+                borderRadius="50%"
+                width={"12px"}
+                height="12px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #248964, #3de5a7)"
+                borderRadius="50%"
+                width={"16px"}
+                height="16px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #248964, #3de5a7)"
+                borderRadius="50%"
+                width={"20px"}
+                height="20px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                width={"fit-content"}
+                alignSelf="center"
+                paddingBottom="1.5rem"
               >
-                2
-              </Text>
+                <Text
+                  background="linear-gradient(90deg, #248964, #3de5a7)"
+                  borderRadius="50%"
+                  color={"white"}
+                  padding="0.5em 1em"
+                  textStyle={"Number"}
+                >
+                  2
+                </Text>
+              </Flex>
             </Flex>
-            <Text color={"white"} textAlign="center">
-              Earn
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionsHeading"}
+            >
+              <GradientText content="Earn" colorString="#248964, #3de5a7">
+                Earn
+              </GradientText>
             </Text>
-            <Text color={"white"} textAlign="center">
-              Get the rewards
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionSubHeadingTwo"}
+              marginTop="1.25rem"
+            >
+              Be the rewarded for try-hard
             </Text>
-            <Text color={"white"} textAlign="center">
-              Serenity rewards each player as you play, complete quests, compete
-              in PvE, bet, or challenge you will earn RNG or GG tokens.
-            </Text>
+            <Flex
+              width={"100%"}
+              minH="fit-content"
+              pos={"relative"}
+              marginTop="3.25rem"
+              marginBottom={"5rem"}
+            >
+              <EthereumLogo />
+              <Flex
+                flexDirection={"column"}
+                width="50%"
+                justifyContent={"space-evenly"}
+                paddingRight="6rem"
+              >
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Serenity
+                  </Text>
+                  <Text color={"gray.400"}>
+                    allows players to sell/buy/loan accounts, items, time,
+                    skills you’ve earned whilst playing your favorite competitve
+                    games like League of Legends.
+                  </Text>
+                </Flex>
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Tokens
+                  </Text>
+                  <Text color={"gray.400"}>
+                    RNG and GG tokens each have their own value systems.
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
+            <Flex flexDir="column" alignItems={"center"}>
+              <Text color={"white"} textAlign="center">
+                Spend with our affiliates
+              </Text>
+              <Flex
+                opacity={0.3}
+                width="40%"
+                justifyContent={"space-evenly"}
+                paddingTop="1.75rem"
+              >
+                <Image
+                  src="/affiliates/alienwareWhite.png"
+                  width="42px"
+                  height="48px"
+                  alt=""
+                />
+                <Image
+                  src="/affiliates/riotWhite.png"
+                  width="52px"
+                  height="48px"
+                  alt=""
+                />
+                <Image
+                  src="/affiliates/logitechWhite.png"
+                  width="52px"
+                  height="48px"
+                  alt=""
+                />
+                <Image
+                  src="/affiliates/secretLabWhite.png"
+                  width="56px"
+                  height="48px"
+                  alt=""
+                />
+              </Flex>
+            </Flex>
             {/* THIRD SECTION */}
-            <Flex width={"fit-content"} alignSelf="center">
-              <Text
-                backgroundColor={"green"}
+            <Flex flexDir={"column"} alignItems="center" paddingTop={"8rem"}>
+              <Flex
+                background="linear-gradient(90deg, #351990, #8265de)"
                 borderRadius="50%"
-                color={"white"}
-                padding="1em 1.5em"
+                width={"8px"}
+                height="8px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #351990, #8265de)"
+                borderRadius="50%"
+                width={"12px"}
+                height="12px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #351990, #8265de)"
+                borderRadius="50%"
+                width={"16px"}
+                height="16px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #351990, #8265de)"
+                borderRadius="50%"
+                width={"20px"}
+                height="20px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                width={"fit-content"}
+                alignSelf="center"
+                paddingBottom="1.5rem"
               >
-                3
-              </Text>
+                <Text
+                  background="linear-gradient(90deg, #351990, #8265de)"
+                  borderRadius="50%"
+                  color={"white"}
+                  padding="0.5em 1em"
+                  textStyle={"Number"}
+                >
+                  3
+                </Text>
+              </Flex>
             </Flex>
-            <Text color={"white"} textAlign="center">
-              Compete
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionsHeading"}
+            >
+              <GradientText content="Compete" colorString="#351990, #8265de">
+                Compete
+              </GradientText>
             </Text>
-            <Text color={"white"} textAlign="center">
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionSubHeadingTwo"}
+              marginTop="1.25rem"
+            >
               Challenge to be the best
             </Text>
-            <Text color={"white"} textAlign="center">
+            <Flex
+              width={"100%"}
+              minH="fit-content"
+              pos={"relative"}
+              marginTop="3.25rem"
+              marginBottom={"5rem"}
+            >
+              <Trophy />
+              <Flex
+                flexDirection={"column"}
+                width="50%"
+                justifyContent={"space-evenly"}
+                paddingRight="6rem"
+              >
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Serenity
+                  </Text>
+                  <Text color={"gray.400"}>
+                    allows players to sell/buy/loan accounts, items, time,
+                    skills you’ve earned whilst playing your favorite competitve
+                    games like League of Legends.
+                  </Text>
+                </Flex>
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Tokens
+                  </Text>
+                  <Text color={"gray.400"}>
+                    RNG and GG tokens each have their own value systems.
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
+            {/* <Text color={"white"} textAlign="center">
               Challenge players to 5v5, 1v1, tournaments, and more to show off
               your skill, build a team, or each rewards via Serenity.
-            </Text>
+            </Text> */}
             {/* FOURTH SECTION */}
-            <Flex width={"fit-content"} alignSelf="center">
-              <Text
-                backgroundColor={"red"}
+            <Flex flexDir={"column"} alignItems="center" paddingTop={"4rem"}>
+              <Flex
+                background="linear-gradient(90deg, #ff082b, #ff8533)"
                 borderRadius="50%"
-                color={"white"}
-                padding="1em 1.5em"
+                width={"8px"}
+                height="8px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #ff082b, #ff8533)"
+                borderRadius="50%"
+                width={"12px"}
+                height="12px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #ff082b, #ff8533)"
+                borderRadius="50%"
+                width={"16px"}
+                height="16px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                background="linear-gradient(90deg, #ff082b, #ff8533)"
+                borderRadius="50%"
+                width={"20px"}
+                height="20px"
+                marginBottom={"0.5rem"}
+              />
+              <Flex
+                width={"fit-content"}
+                alignSelf="center"
+                paddingBottom="1.5rem"
               >
-                4
-              </Text>
+                <Text
+                  background="linear-gradient(90deg, #ff082b, #ff8533)"
+                  borderRadius="50%"
+                  color={"white"}
+                  padding="0.5em 1em"
+                  textStyle={"Number"}
+                >
+                  4
+                </Text>
+              </Flex>
             </Flex>
-            <Text color={"white"} textAlign="center">
-              Contribute
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionsHeading"}
+            >
+              <GradientText content="Contribute" colorString="#ff082b, #ff8533">
+                Contribute
+              </GradientText>
             </Text>
-            <Text color={"white"} textAlign="center">
+            <Text
+              color={"white"}
+              textAlign="center"
+              textStyle={"SectionSubHeadingTwo"}
+              marginTop="1.25rem"
+            >
               Be involved in the eco-system
             </Text>
-            <Text color={"white"} textAlign="center">
-              Marketplace allows players to sell/buy/loan accounts, items, time,
-              skills you’ve earned whilst playing your favorite competitve games
-              like League of Legends.
-            </Text>
-            <Text color={"white"} textAlign="center">
+            <Flex
+              width={"100%"}
+              minH="fit-content"
+              pos={"relative"}
+              marginTop="3.25rem"
+              marginBottom={"5rem"}
+            >
+              <Contribute />
+              <Flex
+                flexDirection={"column"}
+                width="50%"
+                justifyContent={"space-evenly"}
+                paddingRight="6rem"
+              >
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Marketplace
+                  </Text>
+                  <Text color={"gray.400"}>
+                    allows players to sell/buy/loan accounts, items, time,
+                    skills you’ve earned whilst playing your favorite competitve
+                    games like League of Legends.
+                  </Text>
+                </Flex>
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Voting
+                  </Text>
+                  <Text color={"gray.400"}>
+                    allows players to sell/buy/loan accounts, items, time,
+                    skills you’ve earned whilst playing your favorite competitve
+                    games like League of Legends.
+                  </Text>
+                </Flex>
+                <Flex flexDirection={"column"} marginBottom="1.75rem">
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Scouting
+                  </Text>
+                  <Text color={"gray.400"}>
+                    allows players to sell/buy/loan accounts, items, time,
+                    skills you’ve earned whilst playing your favorite competitve
+                    games like League of Legends.
+                  </Text>
+                </Flex>
+                <Flex flexDirection={"column"}>
+                  <Text as="h5" color={"white"} textStyle="Label">
+                    Training
+                  </Text>
+                  <Text color={"gray.400"}>
+                    allows players to sell/buy/loan accounts, items, time,
+                    skills you’ve earned whilst playing your favorite competitve
+                    games like League of Legends.
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
+            <Flex flexDir={"column"} alignItems="center">
+              <Text paddingTop={"3rem"}
+              paddingBottom="3rem"
+              color={"white"}
+              textAlign="center"
+              textStyle={"TinyHeading"}
+              transform="scale(1.2, 0.9)">JOIN THE REVOLUTION</Text>
+              <Flex paddingBottom={"6rem"}>
+                <JoinAlpha />
+              </Flex>
+            </Flex>
+          </Container>
+        </Box>
+        <Box
+          as="section"
+          background="linear-gradient(rgb(241, 241, 245) 0%, rgb(255, 255, 255) 74.78%, rgb(255, 255, 255) 100%), rgb(255, 255, 255)"
+        >
+          <Container>
+            <Text as="h2"
+              textStyle="SectionHeading"
+              paddingTop="6rem"
+              textAlign={"center"}
+              marginBottom="0.35em">
               COMING SOON...
             </Text>
             <Flex>
-              {["voting grounds", "scouting grounds", "training grounds"].map(
-                (value) => (
-                  <Flex key={value} minW={"33%"}>
-                    <Flex width={"100%"} margin="1em" backgroundColor={"red"}>{value}</Flex>
+              {["scouting grounds", "training grounds"].map((value) => (
+                <Flex key={value} minW={"50%"}>
+                  <Flex width={"100%"} margin="1em" backgroundColor={"#d6d1e8"} border="4px solid #351990" borderRadius={"8px"} padding="3rem">
+                    {value}
                   </Flex>
-                )
-              )}
+                </Flex>
+              ))}
+            </Flex>
+            <Flex minW={"100%"}>
+              <Flex width={"100%"} margin="1em" backgroundColor={"#cde8ed"} border="4px solid #088da5" borderRadius={"8px"} padding="3rem">
+                voting grounds
+              </Flex>
             </Flex>
           </Container>
         </Box>

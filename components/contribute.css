@@ -1,0 +1,155 @@
+#each {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+#holder {
+  display: flex;
+  position: relative;
+  width: 50%;
+  min-height: fit-content;
+}
+
+.a3d {
+  transform: rotateX(-35deg) rotateY(-45deg);
+}
+
+.g:nth-child(3n + 0) .exp {
+  color: #ff082b;
+}
+.g:nth-child(3n + 1) .exp {
+  color: #ff8533;
+}
+.g:nth-child(3n + 2) .exp {
+  color: rgb(189, 189, 189);
+}
+.g:nth-child(1) {
+  z-index: 0;
+  transform: translate3d(0, -6em, -6em);
+}
+.g:nth-child(1) > .s3d {
+  transform: translate(-6em);
+}
+.g:nth-child(1) > .s3d .s2d {
+  box-shadow: 0 0 1px #fff;
+}
+.g:nth-child(2) {
+  z-index: 1;
+  transform: rotate3d(0, 0, 1, 90deg) translate3d(0, -6em, -6em);
+}
+.g:nth-child(2) .rev {
+  transform: rotate3d(0, 0, 1, -90deg);
+}
+.g:nth-child(2) > .s3d {
+  transform: translate(-6em);
+}
+.g:nth-child(2) > .s3d .s2d {
+  box-shadow: 0 0 1px #fff;
+}
+.g:nth-child(3) {
+  z-index: 0;
+  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 1, 0, -90deg)
+    translate3d(0, -6em, -6em);
+}
+.g:nth-child(3) .rev {
+  transform: rotate3d(0, 1, 0, 90deg) rotate3d(0, 0, 1, -90deg);
+}
+.g:nth-child(3) > .s3d {
+  transform: translate(-6em);
+}
+.g:nth-child(3) > .s3d .s2d {
+  box-shadow: 0 0 1px #fff;
+}
+.g:nth-child(4) {
+  z-index: 1;
+  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 1, 0, -90deg)
+    rotate3d(0, 0, 1, 90deg) translate3d(0, -6em, -6em);
+}
+.g:nth-child(4) .rev {
+  transform: rotate3d(0, 0, 1, -90deg) rotate3d(0, 1, 0, 90deg)
+    rotate3d(0, 0, 1, -90deg);
+}
+.g:nth-child(4) > .s3d {
+  transform: translate(-6em);
+}
+.g:nth-child(4) > .s3d .s2d {
+  box-shadow: 0 0 1px #fff;
+}
+.g:nth-child(5) {
+  z-index: 0;
+  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 1, 0, -90deg)
+    rotate3d(0, 0, 1, 90deg) rotate3d(0, 1, 0, -90deg)
+    translate3d(0, -6em, -6em);
+}
+.g:nth-child(5) .rev {
+  transform: rotate3d(0, 1, 0, 90deg) rotate3d(0, 0, 1, -90deg)
+    rotate3d(0, 1, 0, 90deg) rotate3d(0, 0, 1, -90deg);
+}
+.g:nth-child(5) > .s3d {
+  transform: translate(-6em);
+}
+.g:nth-child(5) > .s3d .s2d {
+  box-shadow: 0 0 1px #fff;
+}
+.g:nth-child(6) {
+  z-index: 1;
+  transform: rotate3d(0, 0, 1, 90deg) rotate3d(0, 1, 0, -90deg)
+    rotate3d(0, 0, 1, 90deg) rotate3d(0, 1, 0, -90deg) rotate3d(0, 0, 1, 90deg)
+    translate3d(0, -6em, -6em);
+}
+.g:nth-child(6) .rev {
+  transform: rotate3d(0, 0, 1, -90deg) rotate3d(0, 1, 0, 90deg)
+    rotate3d(0, 0, 1, -90deg) rotate3d(0, 1, 0, 90deg) rotate3d(0, 0, 1, -90deg);
+}
+.g:nth-child(6) > .s3d {
+  transform: translate(-6em);
+}
+.g:nth-child(6) > .s3d .s2d {
+  box-shadow: 0 0 1px #fff;
+}
+
+.exp {
+  transform: scaleX(5);
+}
+
+.exp .s3d {
+  transform-origin: -1em;
+  animation: s 0.5s ease-in-out infinite alternate, o 1s steps(1) infinite;
+}
+.g:nth-child(2n) .exp .s3d {
+  animation-delay: -0.5s;
+}
+
+@keyframes s {
+  0% {
+    transform: scaleX(0);
+  }
+}
+@keyframes o {
+  50% {
+    transform-origin: 1em;
+  }
+}
+.s2d {
+  margin: -1em;
+  width: 2em;
+  height: 2em;
+  background: currentColor;
+}
+.s2d:nth-child(1) {
+  transform: rotate3d(1, 0, 0, 90deg) translateZ(1em);
+  -webkit-filter: brightness(1);
+  filter: brightness(1);
+}
+.s2d:nth-child(2) {
+  transform: rotate3d(0, 1, 0, 90deg) translateZ(1em);
+  -webkit-filter: brightness(0.9);
+  filter: brightness(0.9);
+}
+.s2d:nth-child(3) {
+  transform: rotate3d(0, 0, 1, 90deg) translateZ(1em);
+  -webkit-filter: brightness(0.8);
+  filter: brightness(0.8);
+}

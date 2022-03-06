@@ -1,4 +1,7 @@
 import "../styles/globals.css";
+import "../components/contribute.css";
+import "../components/ticker.css"
+import "../components/ethereumLogo.css"
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "../styles/theme";

@@ -5,11 +5,11 @@ import { Container } from "./containers";
 
 export const NavBar = () => <Box as="nav" marginTop={"1em"}>
     <Container>
-        <Flex flex={1} flexDirection="row">
-            <Flex flex={0.5}>
-                <Image src={'/logo.svg'} width="180px" height="64px" />
+        <Flex width={"100%"} flexDirection="row">
+            <Flex width={"50%"}>
+                <Image src={'/logo.svg'} width="180px" height="64px" alt="logo" />
             </Flex>
-            <Flex flex={0.5} justifyContent="flex-end" alignItems="center">
+            <Flex width={"50%"} justifyContent="flex-end" alignItems="center">
                 <ConnectWallet />
             </Flex>
         </Flex>

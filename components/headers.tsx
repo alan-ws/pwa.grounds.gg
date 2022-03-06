@@ -33,14 +33,14 @@ const colorChangeThree = `
   }
 `;
 
-const GradientText: FC<{ content: string; animationKeyframes: string; }> = ({ children, content, animationKeyframes }) => {
+export const GradientText: FC<{ content: string; colorString: string; animationKeyframes?: string; }> = ({ children, content, animationKeyframes, colorString }) => {
   return <Text
     as="span"
     _before={{
       content: `'${content}'`,
       position: "absolute",
       zIndex: 1,
-      background: "linear-gradient(60deg, #eee, #333)",
+      background: `linear-gradient(90deg, ${colorString})`,
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       animation: `${keyframes`${animationKeyframes}`} 4s infinite`,
@@ -60,13 +60,13 @@ export const Header = () => {
           userSelect="none"
           position="relative"
         >
-          <GradientText content="Play." animationKeyframes={colorChangeOne}>Play.</GradientText>
+          <GradientText content="Play." animationKeyframes={colorChangeOne} colorString="#6E3FD1, #4741BA">Play.</GradientText>
         </Text>
         <Text as="h1" textStyle="Statment">
-          <GradientText content="Earn." animationKeyframes={colorChangeTwo}>Earn.</GradientText>
+          <GradientText content="Earn." animationKeyframes={colorChangeTwo} colorString="#54CAE3, #56CC73">Earn.</GradientText>
         </Text>
         <Text as="h1" textStyle="Statment">
-          <GradientText content="Repeat." animationKeyframes={colorChangeThree}>Repeat.</GradientText>
+          <GradientText content="Repeat." animationKeyframes={colorChangeThree} colorString="#FAB30F, #E34F19">Repeat.</GradientText>
         </Text>
       </Flex>
     </Container>
