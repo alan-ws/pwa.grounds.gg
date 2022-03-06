@@ -802,7 +802,7 @@ const Page: NextPage = () => {
             </Flex>
           </Container>
         </Box>
-        <Box
+        {/* <Box
           as="section"
           background="linear-gradient(rgb(241, 241, 245) 0%, rgb(255, 255, 255) 74.78%, rgb(255, 255, 255) 100%), rgb(255, 255, 255)"
         >
@@ -829,7 +829,7 @@ const Page: NextPage = () => {
               </Flex>
             </Flex>
           </Container>
-        </Box>
+        </Box> */}
       </main>
 
       <footer></footer>
